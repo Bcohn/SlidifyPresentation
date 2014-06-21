@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Visualizing Correlation</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Visualizing Correlation">
+  <meta name="author" content="Brent Cohn">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Visualizing Correlation</h1>
+    <h2>Coursera Developing Data Products 2014</h2>
+    <p>Brent Cohn<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h3>Overview</h3>
+  </hgroup>
+  <article data-timings="">
+    <p>Understanding the relationship between correlation and linear regression is a key step to getting a better undersatnding of introductory statistics.</p>
+
+<p>This basic tool aims to give students the ability to </p>
+
+<ul>
+<li>Visualize &quot;what correlation looks like&quot; on a two dimension plane</li>
+<li>Grasp the difference between negative and positive correlation</li>
+<li>Examine the relationship between correlation and absolute value of residuals </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h3>Motivation</h3>
+  </hgroup>
+  <article data-timings="">
+    <p>Shiny allows you to build dynamic apps using only R. This is perfect to construct interactive tools that allow kids to learn about statistics.</p>
+
+<p>This app demos several key statistical ideas: </p>
+
+<ul>
+<li>Linear Regression</li>
+<li>Sample from a normal distribution (generating the random data)</li>
+<li>Correlation</li>
+<li>Residuals</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h3>Correlation</h3>
+  </hgroup>
+  <article data-timings="">
+    <p>Correlation refers to a broad class of situations where one variable is &#39;dependent&#39; on another. </p>
+
+<p>The code below one the following slide generates  two data frames: one with highly correlated variables (dat) and one with almost uncorrelated variables (udat)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h3>R Code</h3>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">library(mvtnorm)
+number &lt;- 10
+ymean &lt;- 50
+xmean &lt;- 1000
+correlation &lt;- 0.9
+dat &lt;- rmvnorm(n = number, mean = c(ymean, xmean), sigma = matrix(c(5, correlation * 
+    sqrt(50), correlation * sqrt(50), 10), 2, 2))
+dat &lt;- data.frame(dat)
+
+correlation &lt;- 0.01
+udat &lt;- rmvnorm(n = number, mean = c(ymean, xmean), sigma = matrix(c(5, correlation * 
+    sqrt(50), correlation * sqrt(50), 10), 2, 2))
+udat &lt;- data.frame(udat)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h3>Check it out</h3>
+  </hgroup>
+  <article data-timings="">
+    <p>To see what correlated and uncorrelated variables look like when plotted, check out: 
+<a href="https://bcohn.shinyapps.io/CourseraShiny/">The Shiny App!</a></p>
+
+<p>and of course</p>
+
+<p><a href="https://github.com/Bcohn/DataProductsShiny">The code</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Overview'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Motivation'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Correlation'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='R Code'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Check it out'>
+         5
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
